@@ -14,6 +14,26 @@ Ejercicios básicos
   `get_pitch`.
 
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
+   
+	   void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
+
+		  /// \TODO Compute the autocorrelation r[l]
+		  /// \DONE Autocorrelación implementada.
+
+		  //int N = x.size();
+		   
+			for (unsigned int l = 0; l < r.size(); ++l) {
+			  r[l] = 0;
+			  for(unsigned int i = 0; i < (x.size()-1)-l; ++i){
+				r[l] = x[i]*x[i+l] + r[l];
+			  }
+			  r[l] = r[l] / x.size();
+				
+			}
+
+			if (r[0] == 0.0F) //to avoid log() and divide zero 
+			   r[0] = 1e-10; 
+		}
 
    * Inserte una gŕafica donde, en un *subplot*, se vea con claridad la señal temporal de un segmento de
      unos 30 ms de un fonema sonoro y su periodo de pitch; y, en otro *subplot*, se vea con claridad la
@@ -21,11 +41,66 @@ Ejercicios básicos
 
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la librería matplotlib de Python.
+	 
+	 ![alt text]()
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
+	 
+	 Primero tenemos hacer un enventanado. Para ello, programamos la ventana de Hamming de la siguiente 
+	 forma:
+	 
+	 
+	 Finalmente calculamos la autocorrelación y procedemos con la programación para encontrar el primer
+	 máximo secundario: 	 
+
+		vector<float> r(npitch_max);
+
+		//Compute correlation
+		autocorrelation(x, r);
+
+		vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+
+		/// \TODO 
+		/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
+		/// Choices to set the minimum value of the lag are:
+		///    - The first negative value of the autocorrelation.
+		///    - The lag corresponding to the maximum value of the pitch.
+		///	   .
+		/// In either case, the lag should not exceed that of the minimum value of the pitch.
+
+		/// \DONE Recorremos la autocorrelación desde el periodo mínimo de pitch 
+		/// (y por tanto, pasado el origen donde hay el 1r máximo) hasta el máximo periodo posible 
+		/// y guardamos el valor del máximo encontrado (2ndo máximo).  
+
+		iR = iR + npitch_min;
+		iRMax = iR;
+
+		while(iR <= r.end()){ 
+		  if(*iRMax < *iR)
+			iRMax = iR;    
+		  iR++;  
+		}
+
+		unsigned int lag = iRMax - r.begin();
+	  
+		float pot = 10 * log10(r[0]);
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+   
+		bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
+		
+			if(pot < -50 || r1norm < 0.65F || rmaxnorm < 0.25F){
+			  return true;   //Unvoiced
+			}else {
+			  return false;  //Voiced
+			}
+			
+			/// \TODO Implement a rule to decide whether the sound is voiced or not.
+			/// * You can use the standard features (pot, r1norm, rmaxnorm),
+			///   or compute and use other ones.
+			/// \DONE Falta optimizar los valores. 
+		}
 
 - Una vez completados los puntos anteriores, dispondrá de una primera versión del detector de pitch. El 
   resto del trabajo consiste, básicamente, en obtener las mejores prestaciones posibles con él.
@@ -42,10 +117,21 @@ Ejercicios básicos
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+		
+		![alt text]()
+		
+		Nivel de potencia de la señal: r[0] = 3.752
+		Autocorrelación normalizada de uno: r1norm = r[1] / r[0] = 3.631 / 3.752 = 0.968
+		Autocorrelación en su máximo secundario: rmaxnorm = r[lag] / r[0] = 2.385 / 3.752 = 0.636 
 
       - Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos detectores.
+	
+		![alt text]()
+		1r panel: detección de pitch de nuestro sistema.
+		2ndo panel: detección de pitch de `wavesurfer`. 
+		3r panel: señal analizada.
   
   * Optimice los parámetros de su sistema de detección de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
