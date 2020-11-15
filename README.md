@@ -50,6 +50,31 @@ Ejercicios básicos
 	 Primero tenemos hacer un enventanado. Para ello, programamos la ventana de Hamming de la siguiente 
 	 forma:
 	 
+			void PitchAnalyzer::set_window(Window win_type) {
+				if (frameLen == 0)
+				  return;
+
+				window.resize(frameLen);
+
+				float a0 = 0.53836;
+				float a1 = 0.46164;
+
+				switch (win_type) {
+				case HAMMING:
+				/// \TODO Implement the Hamming window
+				/// \DONE Ventana de Hamming implementada. 
+				/// Hemos consultado internet para referencias y ejemplos. 
+
+				  for (unsigned int n = 0; n < frameLen; ++n){
+					window[n] = a0 - a1*cos((2*M_PI*n)/(frameLen-1));
+				  }
+
+				  break;
+				case RECT:
+				default:
+				  window.assign(frameLen, 1);
+				}
+			}
 	 
 	 Finalmente calculamos la autocorrelación y procedemos con la programación para encontrar el primer
 	 máximo secundario: 	 
