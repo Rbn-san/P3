@@ -118,7 +118,7 @@ Ejercicios básicos
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
 		
-		![alt text]()
+		![grafica detec. pitch wavesurfer](/material/ws_pitch.PNG)
 		
 		Nivel de potencia de la señal: r[0] = 3.752  
 		Autocorrelación normalizada de uno: r1norm = r[1] / r[0] = 3.631 / 3.752 = 0.968  
@@ -128,7 +128,7 @@ Ejercicios básicos
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos detectores.
 	
-		![comparacio detectors pitch](/material/matlab_autocor_valors.PNG)
+		![comparacio detectors pitch](/material/comp_pitch_1.PNG)
 		1r panel: detección de pitch de nuestro sistema.  
 		2ndo panel: detección de pitch de `wavesurfer`.   
 		3r panel: señal analizada.
