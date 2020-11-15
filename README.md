@@ -162,10 +162,25 @@ Ejercicios básicos
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
 
+	Tras optimizar los valores, hemos conseguido minimizar las tasas de error hasta los siguientes resultados:
+
+	| Sonoro por sordo (VU)    |  5.00 % |
+	| Sordo por sonor (UV)     |  8.35 % |
+	| Errores groseros (G)     |  2.63 % |
+	| MSE de los errores finos |  2.23 % |
+	| TOTAL                    | 90.73 % |
+
+	Se puede comprobar con la siguiente captura del proporcionada por `pitch_evaluate`:
+	![pitch_evaluate summary](/material/summary9073.PNG)
+
    * Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del
      detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará
 	 el uso de alternativas de mayor calidad (particularmente Python).
    
+     ![comparació detectors pitch final](/material/comp_pitch_2.PNG)
+	 1r panel: detección de pitch de nuestro sistema.  
+	 2ndo panel: detección de pitch de `wavesurfer`.   
+	 3r panel: señal analizada.
 
 Ejercicios de ampliación
 ------------------------
