@@ -165,6 +165,7 @@ Ejercicios básicos
 	Tras optimizar los valores, hemos conseguido minimizar las tasas de error hasta los siguientes resultados:
 
 	| Sonoro por sordo (VU)    |  5.00 % |
+	|--------------------------|---------|
 	| Sordo por sonor (UV)     |  8.35 % |
 	| Errores groseros (G)     |  2.63 % |
 	| MSE de los errores finos |  2.23 % |
