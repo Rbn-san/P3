@@ -68,7 +68,7 @@ namespace upc {
 
   bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
     
-    if(pot < -50 || r1norm < 0.87F || rmaxnorm < 0.28F){
+    if(pot < -50 || (rmaxnorm < 0.45F && r1norm < 0.93F) || r1norm < 0.61F || rmaxnorm < 0.28F ){
       return true;   //Unvoiced
     }else {
       return false;  //Voiced

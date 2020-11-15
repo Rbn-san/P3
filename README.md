@@ -162,15 +162,17 @@ Ejercicios básicos
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
 
-	Tras optimizar los valores, hemos conseguido minimizar las tasas de error hasta los siguientes resultados:
+	Para una mayor optimización hemos añadido una condición extra en el `PitchAnalyzer::unvoiced` que contempla 
+	ambos valores r1norm y rmaxnorm simultáneamente, y hemos ajustado todos los valores. Finalmente hemos 
+	conseguido minimizar las tasas de error hasta los siguientes resultados:
 
 	| Tipo de tasa de error        |  Resultado |
 	|------------------------------|-----------:|
-	| **Sonoro por sordo (VU)**    |     5.00 % |
-	| **Sordo por sonor (UV)**     |     8.35 % |
-	| **Errores groseros (G)**     |     2.63 % |
+	| **Sonoro por sordo (VU)**    |     7.75 % |
+	| **Sordo por sonor (UV)**     |     4.43 % |
+	| **Errores groseros (G)**     |     2.50 % |
 	| **MSE de los errores finos** |     2.23 % |
-	| **TOTAL**                    |**90.73 %** |
+	| **TOTAL**                    |**91.36 %** |
 
 	Se puede comprobar con la siguiente captura del proporcionada por `pitch_evaluate`:
 	![pitch_evaluate summary](/material/summary9073.PNG)
