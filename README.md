@@ -120,17 +120,17 @@ Ejercicios básicos
 		
 		![alt text]()
 		
-		Nivel de potencia de la señal: r[0] = 3.752
-		Autocorrelación normalizada de uno: r1norm = r[1] / r[0] = 3.631 / 3.752 = 0.968
-		Autocorrelación en su máximo secundario: rmaxnorm = r[lag] / r[0] = 2.385 / 3.752 = 0.636 
+		Nivel de potencia de la señal: r[0] = 3.752  
+		Autocorrelación normalizada de uno: r1norm = r[1] / r[0] = 3.631 / 3.752 = 0.968  
+		Autocorrelación en su máximo secundario: rmaxnorm = r[lag] / r[0] = 2.385 / 3.752 = 0.636   
 
       - Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos detectores.
 	
 		![comparacio detectors pitch](/material/matlab_autocor_valors.PNG)
-		1r panel: detección de pitch de nuestro sistema.
-		2ndo panel: detección de pitch de `wavesurfer`. 
+		1r panel: detección de pitch de nuestro sistema.  
+		2ndo panel: detección de pitch de `wavesurfer`.   
 		3r panel: señal analizada.
   
   * Optimice los parámetros de su sistema de detección de pitch e inserte una tabla con las tasas de error
