@@ -175,13 +175,13 @@ Ejercicios básicos
 	| **TOTAL**                    |**91.36 %** |
 
 	Se puede comprobar con la siguiente captura del proporcionada por `pitch_evaluate`:
-	![pitch_evaluate summary](/material/summary9073.PNG)
+	![pitch_evaluate summary](/material/summary9136.PNG)
 
    * Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del
      detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará
 	 el uso de alternativas de mayor calidad (particularmente Python).
    
-     ![comparació detectors pitch final](/material/comp_pitch_2.PNG)
+     ![comparació detectors pitch final](/material/comp_pitch_3.PNG)
 	 1r panel: detección de pitch de nuestro sistema.  
 	 2ndo panel: detección de pitch de `wavesurfer`.   
 	 3r panel: señal analizada.
